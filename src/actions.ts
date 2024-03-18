@@ -64,3 +64,15 @@ export const changePremium = async () => {
     // revalidate Veri Önbelleğini temizlemeye ve en son verileri yeniden getirmeye yarar
     revalidatePath("/profile");
   };
+
+  export const changeUsername = async (formData: FormData) => {
+    const session = await getSession();
+  
+    const newUsername = formData.get("username") as string;
+  
+    username = newUsername;
+  
+    session.username = username;
+    await session.save();
+    revalidatePath("/profile");
+  };
