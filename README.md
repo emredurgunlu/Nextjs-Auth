@@ -1,3 +1,15 @@
+Next.js Auth and Cookie Sessions are used in this project
+There are four pages
+Home page is visible to everyone
+The profile page is visible to logged in users. You can cancel your premium membership on the profile page or reactivate it.
+The premium page is visible to Pro members
+If you are logged in you can not see the login page
+If you check the cookies you see the encrypted session
+If you log out, it removes the cookie
+
+You can generate your secret key by this command:
+openssl rand -base64 32
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
