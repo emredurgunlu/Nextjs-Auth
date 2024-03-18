@@ -21,6 +21,10 @@ export const getSession = async () => {
         session.isLoggedIn = defaultSession.isLoggedIn;
     }
 
+    // CHECK THE USER IN THE DB and update your session
+    session.isBlocked = isBlocked;
+    session.isPro = isPro;
+
     return session;
 }
 export const login = async (prevState: { error: undefined | string },formData: FormData) => {
