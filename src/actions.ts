@@ -2,6 +2,7 @@
 
 import { sessionOptions, SessionData, defaultSession } from "@/lib";
 import { getIronSession } from "iron-session";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -52,3 +53,14 @@ export const logout = async () => {
     session.destroy();
     redirect("/");
 }
+
+export const changePremium = async () => {
+    const session = await getSession();
+  
+    // Gerçek projede burada DB bağlantısı olmalı ve DB'deki değer değiştirilmeli. Fakat bu proje için dummy data'da çalışıldı
+    isPro = !session.isPro;
+    session.isPro = isPro;
+    await session.save();
+    // revalidate Veri Önbelleğini temizlemeye ve en son verileri yeniden getirmeye yarar
+    revalidatePath("/profile");
+  };
